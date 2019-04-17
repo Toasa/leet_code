@@ -26,6 +26,10 @@ func threeSum(nums []int) [][]int {
 
 	for i := 0; i < len(nums)-2; i++ {
 		for j := i + 1; j < len(nums)-1; j++ {
+			if (nums[i] > nums[j]) || (nums[j] > -nums[i]-nums[j]) {
+				continue
+			}
+
 			if m[nums[i]] == 1 {
 				delete(m, nums[i])
 			} else {
@@ -40,7 +44,7 @@ func threeSum(nums []int) [][]int {
 
 			if _, ok := m[-nums[i]-nums[j]]; ok {
 				tmp := []int{nums[i], nums[j], -nums[i] - nums[j]}
-				sort.Ints(tmp)
+				//sort.Ints(tmp)
 
 				if len(res) == 0 {
 					res = append(res, tmp)
